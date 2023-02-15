@@ -77,7 +77,7 @@ public class AccountsPayableDriver {
 			if (payableEmployees.get(index) instanceof BasePlusCommissionEmployee)
 			{
 				hold3 = ((BasePlusCommissionEmployee)payableEmployees.get(index)).getBasePay();
-				hold3 = hold3 * 0.1;
+				hold3 = hold3 * 1.1;
 				((BasePlusCommissionEmployee)payableEmployees.get(index)).setBasePay(hold3);
 //				System.out.println("test");
 			}
