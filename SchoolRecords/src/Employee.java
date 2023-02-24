@@ -1,40 +1,40 @@
 
 public class Employee extends Person{
 
-	int office;
-	int salary;
-	int dHire;
+	String office;
+	String salary;
+	String dHire;
 	
 	public Employee ()
 	{
 		super();
-		office = 101;
-		salary = 10000;
-		dHire = 02132023;
+		office = "101";
+		salary = "10000";
+		dHire = "02132023";
 	}
-	public Employee (String name, String adress, int phoneNum, String email, int office, int salary, int dHire)
+	public Employee (String name, String adress, String phoneNum, String email, String office, String salary, String dHire)
 	{
 		super();
 		this.office = office;
 		this.salary = salary;
 		this.dHire = dHire;
 	}
-	public int getOffice() {
+	public String getOffice() {
 		return office;
 	}
-	public void setOffice(int office) {
+	public void setOffice(String office) {
 		this.office = office;
 	}
-	public int getSalary() {
+	public String getSalary() {
 		return salary;
 	}
-	public void setSalary(int salary) {
+	public void setSalary(String salary) {
 		this.salary = salary;
 	}
-	public int getdHire() {
+	public String getdHire() {
 		return dHire;
 	}
-	public void setdHire(int dHire) {
+	public void setdHire(String dHire) {
 		this.dHire = dHire;
 	}
 	@Override

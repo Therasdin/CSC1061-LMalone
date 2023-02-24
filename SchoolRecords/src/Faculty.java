@@ -2,30 +2,27 @@ import java.util.Arrays;
 
 public class Faculty extends Employee{
 
-	String rankArray[] = new String [] {"Junior","Senior"};
-	int rank;
+	
+	String rank;
 	String officeH;
 	
 	public Faculty()
 	{
 	super();
-	rank= 0;
-	officeH = "1-2pm everyduay";
+	rank= "Senior";
+	officeH = "1-2pm everyday";
 
 	}
-	public Faculty(String name, String adress, int phoneNum, String email, int office, int salary, int dHire, int rank, String officeH)
+	public Faculty(String name, String adress, String phoneNum, String email, String office, String salary, String dHire, String rank, String officeH)
 	{
 		super ();
 		this.rank = rank;
 		this.officeH = officeH;
 	}
-	public String getRankArray() {
-		return rankArray[rank];
-	}
-	public int getRank() {
+	public String getRank() {
 		return rank;
 	}
-	public void setRank(int rank) {
+	public void setRank(String rank) {
 		this.rank = rank;
 	}
 	public String getOfficeH() {
@@ -36,7 +33,7 @@ public class Faculty extends Employee{
 	}
 	@Override
 	public String toString() {
-		return "Faculty rank=" + rankArray[rank] + ", officeH=" + officeH
+		return "Faculty rank=" + rank + ", officeH=" + officeH
 				+ ", office=" + office + ", salary=" + salary + ", dHire=" + dHire + ", name=" + name + ", adress="
 				+ adress + ", phoneNum=" + phoneNum + ", email=" + email + "]";
 	}

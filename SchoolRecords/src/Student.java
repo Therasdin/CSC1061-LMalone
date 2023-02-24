@@ -1,33 +1,30 @@
 import java.util.Arrays;
 
 public class Student extends Person{
-	String statArray[] = new String [] {"Freshman","Sophmore","Junior","Senior"};
-	int stat;
+	
+	String stat;
 	
 	public Student()
 	{
 		super();
-		stat = 0;
+		stat = "Senior";
 		
 	}
-	public Student(	String name, String adress, int phoneNum, String email, String[] statArray, int stat)
+	public Student(	String name, String adress, String phoneNum, String email, String stat)
 	{
 		super();
-		this.statArray = statArray;
 		this.stat = stat;
 	}
-	public String getStatArray() {
-		return statArray[stat];
-	}
-	public int getStat() {
+
+	public String getStat() {
 		return stat;
 	}
-	public void setStat(int stat) {
+	public void setStat(String stat) {
 		this.stat = stat;
 	}
 	@Override
 	public String toString() {
-		return "Student [statArray=" + Arrays.toString(statArray) + ", stat=" + stat + ", name=" + name + ", adress="
+		return "Student [statArray=" + stat + ", stat=" + stat + ", name=" + name + ", adress="
 				+ adress + ", phoneNum=" + phoneNum + ", email=" + email + "]";
 	}
 	

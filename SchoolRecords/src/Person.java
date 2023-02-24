@@ -2,18 +2,18 @@
 public class Person {
 	String name;
 	String adress;
-	int phoneNum;
+	String phoneNum;
 	String email;
 	
 	public Person ()
 	{
 	name = "John Doe";
 	adress = "123 Main Street";   
-	phoneNum = 1234567890;
+	phoneNum = "1234567890";
 	email = "JohnDoe@gmail.com";
 	}
 	
-	public Person (	String name, String adress, int phoneNum, String email) 
+	public Person (	String name, String adress, String phoneNum, String email) 
 	{
 		this.name = name;
 		this.adress = adress;
@@ -37,11 +37,11 @@ public class Person {
 		this.adress = adress;
 	}
 
-	public int getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
 
-	public void setPhoneNum(int phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 

@@ -7,7 +7,7 @@ public class Staff extends Employee{
 		super ();
 		title = "teacher";
 	}
-	public Staff (String name, String adress, int phoneNum, String email, int office, int salary, int dHire, String title)
+	public Staff (String name, String adress, String phoneNum, String email, String office, String salary, String dHire, String title)
 	{
 		super();
 		this.title = title;
