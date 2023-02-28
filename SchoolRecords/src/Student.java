@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Student extends Person{
 	
-	String stat;
+	private String stat;
 	
 	public Student()
 	{
@@ -12,7 +12,7 @@ public class Student extends Person{
 	}
 	public Student(	String name, String adress, String phoneNum, String email, String stat)
 	{
-		super();
+		super(name, adress, phoneNum, email);
 		this.stat = stat;
 	}
 
@@ -24,8 +24,7 @@ public class Student extends Person{
 	}
 	@Override
 	public String toString() {
-		return "Student [statArray=" + stat + ", stat=" + stat + ", name=" + name + ", adress="
-				+ adress + ", phoneNum=" + phoneNum + ", email=" + email + "]";
+		return "Student [stat=" + stat + "]";
 	}
 	
 }

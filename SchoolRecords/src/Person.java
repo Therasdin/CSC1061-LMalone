@@ -1,9 +1,9 @@
 
 public class Person {
-	String name;
-	String adress;
-	String phoneNum;
-	String email;
+	private String name;
+	private String adress;
+	private String phoneNum;
+	private String email;
 	
 	public Person ()
 	{

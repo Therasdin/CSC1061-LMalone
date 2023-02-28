@@ -3,8 +3,8 @@ import java.util.Arrays;
 public class Faculty extends Employee{
 
 	
-	String rank;
-	String officeH;
+	private String rank;
+	private String officeH;
 	
 	public Faculty()
 	{
@@ -15,7 +15,7 @@ public class Faculty extends Employee{
 	}
 	public Faculty(String name, String adress, String phoneNum, String email, String office, String salary, String dHire, String rank, String officeH)
 	{
-		super ();
+		super (name, adress, phoneNum, email, office, salary, dHire);
 		this.rank = rank;
 		this.officeH = officeH;
 	}
@@ -33,10 +33,8 @@ public class Faculty extends Employee{
 	}
 	@Override
 	public String toString() {
-		return "Faculty rank=" + rank + ", officeH=" + officeH
-				+ ", office=" + office + ", salary=" + salary + ", dHire=" + dHire + ", name=" + name + ", adress="
-				+ adress + ", phoneNum=" + phoneNum + ", email=" + email + "]";
+		return "Faculty [rank=" + rank + ", officeH=" + officeH + "]";
 	}
-	
+
 	
 }

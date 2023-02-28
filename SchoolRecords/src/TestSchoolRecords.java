@@ -4,11 +4,11 @@ public class TestSchoolRecords {
 
 	public static void main(String[] args) throws Exception {
 		Faculty bob = new Faculty("Bob", "123 Main St", "1234567890", "Bob@gmail.com", "101A", "$30000", "2/23/23", "Senior", "1-2pm" );
-		Faculty ron = new Faculty("Ron", "123 Main St", "1234567890", "Bob@gmail.com", "101A", "$30000", "2/23/23", "Senior", "1-2pm" );
-		Staff rick = new Staff("Rick", "123 Main St", "1234567890", "Bob@gmail.com", "101A", "$30000", "2/23/23", "Principal" );
-		Staff alice = new Staff("Alice", "123 Main St", "1234567890", "Bob@gmail.com", "101A", "$30000", "2/23/23", "Principal");
-		Student sue = new Student("Sue", "123 Main St", "1234567890", "Bob@gmail.com", "Senior");
-		Student tom = new Student("Tom", "123 Main St", "1234567890", "Bob@gmail.com", "Senior");
+		Faculty ron = new Faculty("Ron", "124 Main St", "1234567890", "Bob@gmail.com", "101A", "$30000", "2/23/23", "Senior", "1-2pm" );
+		Staff rick = new Staff("Rick", "125 Main St", "1234567890", "Bob@gmail.com", "101A", "$30000", "2/23/23", "Principal" );
+		Staff alice = new Staff("Alice", "126 Main St", "1234567890", "Bob@gmail.com", "101A", "$30000", "2/23/23", "Principal");
+		Student sue = new Student("Sue", "127 Main St", "1234567890", "Bob@gmail.com", "Senior");
+		Student tom = new Student("Tom", "128 Main St", "1234567890", "Bob@gmail.com", "Senior");
 
 		Database data = new Database();
 

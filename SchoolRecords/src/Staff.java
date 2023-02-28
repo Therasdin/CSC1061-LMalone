@@ -1,7 +1,7 @@
 
 public class Staff extends Employee{
 	
-	String title;
+	private String title;
 	public Staff()
 	{
 		super ();
@@ -9,7 +9,7 @@ public class Staff extends Employee{
 	}
 	public Staff (String name, String adress, String phoneNum, String email, String office, String salary, String dHire, String title)
 	{
-		super();
+		super(name, adress, phoneNum, email, office, salary, dHire);
 		this.title = title;
 	}
 	public String getTitle() {
@@ -20,10 +20,9 @@ public class Staff extends Employee{
 	}
 	@Override
 	public String toString() {
-		return "Staff [title=" + title + ", office=" + office + ", salary=" + salary + ", dHire=" + dHire + ", name="
-				+ name + ", adress=" + adress + ", phoneNum=" + phoneNum + ", email=" + email + "]";
+		return "Staff [title=" + title + "]";
 	}
-	
+
 	
 }
 

@@ -66,7 +66,7 @@ public class Database {
 		String officeH;
 
 		ArrayList<Person> people = new ArrayList<Person>();
-		for (int i = 0; i < 6; i++) {
+		while(readText.hasNextLine()) {
 			className = readText.nextLine();
 			name = readText.nextLine();
 			address = readText.nextLine();
