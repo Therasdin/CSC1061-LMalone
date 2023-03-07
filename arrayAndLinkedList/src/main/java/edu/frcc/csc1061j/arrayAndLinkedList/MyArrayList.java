@@ -1,5 +1,6 @@
 package edu.frcc.csc1061j.arrayAndLinkedList;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -40,8 +41,8 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public Object[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return Arrays.copyOf(array, size);
 	}
 
 	@Override
@@ -156,15 +157,14 @@ public class MyArrayList<T> implements List<T> {
 			array[i] = array[i - 1];
 		}
 		array[index] = element;
-		
+
 	}
 
 	@Override
 	public T remove(int index) {
 		T element = get(index);
-		for (int i = 0; i < size; i++)
-		{
-			array[i] = array[i+1];
+		for (int i = index; i < size - 1; i++) {
+			array[i] = array[i + 1];
 		}
 		size--;
 		return element;
@@ -173,15 +173,12 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public int indexOf(Object o) {
 		int index = -1;
-		for (int i = 0; i < size; i++)
-		{
-			if (o.equals(i))
-			{
-				
-	
-			index = i;
-			break;
-		}
+		for (int i = 0; i < size; i++) {
+			if (o.equals(i)) {
+
+				index = i;
+				break;
+			}
 		}
 		return index;
 	}

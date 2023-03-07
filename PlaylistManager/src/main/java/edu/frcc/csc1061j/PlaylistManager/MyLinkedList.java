@@ -1,4 +1,4 @@
-package edu.frcc.csc1061j.arrayAndLinkedList;
+package edu.frcc.csc1061j.PlaylistManager;
 
 import java.util.Collection;
 import java.util.Iterator;
