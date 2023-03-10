@@ -13,29 +13,27 @@ public class PlaylistFile {
 	Scanner input = new Scanner(System.in);
 	private final String FILE = "Playlist.txt";
 	private PrintWriter print;
-	 private BufferedReader buffer;    // KNM
-	private Scanner read;           // KNM
+	private BufferedReader buffer;
+	private Scanner read;
 
 	public PlaylistFile() throws IOException {
-		// check for file and create new if it doesn't exist
-		File myFile = new File(FILE);
-		if (!myFile.exists()) {
+		File file = new File(FILE);
+		if (!file.exists()) {
 			try {
-				myFile.createNewFile();
+				file.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			System.out.println("New file created: " + myFile.getName());
+			System.out.println("New file created: " + file.getName());
 
 		}
 		try {
-			read = new Scanner(myFile);    // KNM
-			// read = new BufferedReader(new FileReader(myFile.getName()));  //KNM
+			read = new Scanner(file);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		try {
-			print = new PrintWriter(new FileOutputStream(myFile.getName(), false));
+			print = new PrintWriter(new FileOutputStream(file.getName(), true));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -47,10 +45,10 @@ public class PlaylistFile {
 		String title;
 		try {
 			buffer = new BufferedReader(new FileReader(FILE));
-			while (read.hasNextLine()) {            
-				String lines = read.nextLine();     
+			while (read.hasNextLine()) {
+				String lines = read.nextLine();
 				String[] readScan = lines.split(", ");
-				while ((lines = buffer.readLine()) != null) {  
+				while ((lines = buffer.readLine()) != null) {
 					System.out.println(lines);
 				}
 				try {
@@ -58,23 +56,26 @@ public class PlaylistFile {
 					artist = readScan[1];
 					playlist.add(new Song(artist, title));
 				} catch (ArrayIndexOutOfBoundsException e) {
-					
+
 				}
-				
+
 			}
-			// read.close();          // KNM
-		} catch (Exception e) {         // KNM
+			// read.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return playlist;
 	}
 
-	public void writeSong(Song s) {
-		print.print(s.getTITLE() + ", ");
-		print.print(s.getARTIST());
-		print.println();
-		print.flush();
+	public void writeSong(MyDoubleLinkedList<Song> playlist) {
+		for (Song s : playlist) {
+			print.print(s.getTITLE() + ", ");
+			print.print(s.getARTIST());
+			print.println();
+			print.flush();
+		}
+
 	}
 
 	public PrintWriter getPrint() {

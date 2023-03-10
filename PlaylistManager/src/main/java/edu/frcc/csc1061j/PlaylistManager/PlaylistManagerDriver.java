@@ -21,9 +21,7 @@ public class PlaylistManagerDriver {
 		do {
 			printText();
 			userIn = input.nextInt();
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
+
 
 			while (userIn < 1 || userIn > 9) {
 				System.out.println("Invalid input");
@@ -46,13 +44,10 @@ public class PlaylistManagerDriver {
 			} else if (userIn == 6) {
 				reverse(playlist);
 			} else if (userIn == 7) {
-				playlist = writer.readSong(playlist);
+				writer.writeSong(playlist);
 			} else if (userIn == 8) {
-				
+				writer.readSong(playlist);
 			}
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
 		} while (userIn != 9);
 		System.out.println(writer.getFILE());
 	}
@@ -80,7 +75,6 @@ public class PlaylistManagerDriver {
 				return true;
 			}
 		}
-
 		System.out.println("No Matches");
 		return false;
 	}
@@ -133,6 +127,9 @@ public class PlaylistManagerDriver {
 	}
 
 	public static void printText() {
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
 		System.out.println("Choose a number (1-9)");
 		System.out.println("1. Add Song");
 		System.out.println("2. Remove Song");
@@ -143,6 +140,9 @@ public class PlaylistManagerDriver {
 		System.out.println("7. Save Plalist");
 		System.out.println("8. Load Playlist");
 		System.out.println("9. Quit");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
 
 	}
 }
