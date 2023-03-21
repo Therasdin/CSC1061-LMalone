@@ -1,3 +1,6 @@
 g, g
 g, e
 b, f
+Weak, AJR
+Gravy, train
+t, t

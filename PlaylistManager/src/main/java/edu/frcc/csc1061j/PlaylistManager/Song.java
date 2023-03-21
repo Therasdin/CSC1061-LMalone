@@ -4,34 +4,35 @@ import java.util.List;
 
 public class Song {
 
-	private String TITLE;
-	private String ARTIST;
+	private String title;
+	private String artist;
 	
 	public Song()
 	{
-		TITLE = "Song TITLE";
-		ARTIST = "Song ARTIST";
+		title = "Song title";
+		artist = "Song artist";
 	}
-	public Song(String TITLE, String ARTIST)
+	public Song(String title, String artist)
 	{
-		this.TITLE = TITLE;
-		this.ARTIST = ARTIST;	
+		this.title = title;
+		this.artist = artist;	
 	}
-	public String getTITLE() {
-		return TITLE;
+	public String gettitle() {
+		return title;
 	}
-	public void setTITLE(String TITLE) {
-		this.TITLE = TITLE;
+	public void settitle(String title) {
+		this.title = title;
 	}
-	public String getARTIST() {
-		return ARTIST;
+	public String getartist() {
+		return artist;
 	}
-	public void setARTIST(String ARTIST) {
-		this.ARTIST = ARTIST;
+	public void setartist(String artist) {
+		this.artist = artist;
 	}
 	@Override
 	public String toString() {
-		return "Song [TITLE=" + TITLE + ", ARTIST=" + ARTIST + "]";
+		return "Song [title=" + title + ", artist=" + artist + "]";
 	}
+
 	
 }

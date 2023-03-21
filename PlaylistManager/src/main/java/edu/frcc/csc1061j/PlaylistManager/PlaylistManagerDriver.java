@@ -55,23 +55,26 @@ public class PlaylistManagerDriver {
 	public static void add(MyDoubleLinkedList<Song> playlist) {
 		String name;
 		String artist;
+		name = input.nextLine();
 		System.out.println("Add a song, Enter the song name");
-		name = input.next();
+		name = input.nextLine();
 		System.out.println("Enter the Song's artist name");
-		artist = input.next();
+		artist = input.nextLine();
 		playlist.add(new Song(name, artist));
 	}
 
 	public static boolean remove(MyDoubleLinkedList<Song> playlist) {
 		String name;
 		String artist;
+		name = input.nextLine();
 		System.out.println("Remove a song, Enter the song name");
-		name = input.next();
+		name = input.nextLine();
 		System.out.println("Enter the Song's artist name");
-		artist = input.next();
-		for (int i = 0; i < playlist.size() - 1; i++) {
-			if (name.equals(playlist.get(i).getTITLE()) && (artist.equals(playlist.get(i).getARTIST()))) {
+		artist = input.nextLine();
+		for (int i = 0; i < playlist.size()- 1; i++) {
+			if (name.equals(playlist.get(i).gettitle()) && (artist.equals(playlist.get(i).getartist()))) {
 				playlist.remove(i);
+				System.out.println("Song found!");
 				return true;
 			}
 		}
@@ -97,7 +100,7 @@ public class PlaylistManagerDriver {
 		int index;
 		Song hold;
 		for (int i = 0; i <= playlist.size() - 1; i++) {
-			index = rand.nextInt(playlist.size() - 1);
+			index = rand.nextInt(playlist.size());
 			hold = playlist.get(i);
 			playlist.set(i, playlist.get(index));
 			playlist.set(index, hold);

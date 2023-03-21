@@ -70,8 +70,8 @@ public class PlaylistFile {
 
 	public void writeSong(MyDoubleLinkedList<Song> playlist) {
 		for (Song s : playlist) {
-			print.print(s.getTITLE() + ", ");
-			print.print(s.getARTIST());
+			print.print(s.gettitle() + ", ");
+			print.print(s.getartist());
 			print.println();
 			print.flush();
 		}
