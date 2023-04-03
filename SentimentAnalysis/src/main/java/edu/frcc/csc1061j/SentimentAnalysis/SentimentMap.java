@@ -22,7 +22,7 @@ public class SentimentMap {
 	      sentimentMap.put(tokens[0], Integer.parseInt(tokens[1]));
 	    }
 	    input.close();
-
+    
 	    // get user input from the keyboard
 	    Scanner scanner = new Scanner(System.in);
 	    int totalSentiment = 0;

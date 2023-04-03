@@ -1,0 +1,22 @@
+The goal of this project is to find the file sizes of files and directories/folders. We will first build the 
+tree of files using the File object in Java that provides details about the particular file/folder and also
+the array of files/folders under it. 
+
+The implementation of a node in the tree is provided in FileNode.java.
+FileSizeFinder.java is the driver program that traverses the tree that uses iterators that you will implement
+to find the file/folder sizes and print them to the screen. See Expected Output below for what should be printed.
+The size of a folder is the sum of the sizes of all it's children. Hence, the need for a post-order traversal. 
+All the children should be visited first to get their sizes before we can determine the size of the parent. 
+
+Download and unzip the FileTest.zip file from the D2L Assignment folder.
+Note the path where you unzipped the folder. For example, C:\Downloads\FileTest. 
+Set filePath in FileSizeFinder.java to this path.
+
+There are three TODOs in FileTree.java. Please follow the directions in the TODO comments to complete 
+these sections of code. 
+The first one is to build the FileNode tree using the File object using a recursive algorithm. 
+The second is to complete the class that can be instantiated as a depth-first, post-order traversal iterator.
+The third is to complete the class that can be instantiated as a breadth-first traversal iterator 
+
+Expected Output:
+

@@ -3,7 +3,7 @@ package edu.frcc.csc1061j.MyBookTree;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookNode {
+public class BookNode implements Comparable<BookNode>{
 
 	private String title;
 	private int chapterNum;
@@ -13,9 +13,9 @@ public class BookNode {
 	
 	public BookNode(String title, int chapterNum, int sectionNum, int subSectionNum) {
 		this.title = title;
-		chapterNum = chapterNum;
-		sectionNum = sectionNum;
-		subSectionNum = subSectionNum;
+		this.chapterNum = chapterNum;
+		this.sectionNum = sectionNum;
+		this.subSectionNum = subSectionNum;
 		childNodes = new ArrayList<BookNode>();
 		
 	}
@@ -69,9 +69,31 @@ public class BookNode {
 			return ("\t" + chapterNum + " " + title);
 		}
 		if (subSectionNum == 0) {
-			return ("\t\t" + sectionNum + " " + chapterNum + " " + title);
+			return ("\t\t" + chapterNum + " " + sectionNum + " " + title);
 		}
-		return ("\t\t\t" + subSectionNum + " " + sectionNum + " " + chapterNum + " " + title);
+		return ("\t\t\t" + chapterNum + " " + sectionNum + " " + subSectionNum + " " + title);
 	}
-	
+
+	@Override
+	public int compareTo(BookNode o) {
+		if (chapterNum > o.chapterNum) {
+			return 1;
+		}
+		else if (chapterNum < o.chapterNum) {
+			return -1;
+		}
+		if (sectionNum > o.sectionNum) {
+			return 1;
+		}
+		else if (sectionNum < o.sectionNum) {
+			return -1;
+		}
+		if (subSectionNum > o.subSectionNum) {
+			return 1;
+		}
+		else if (subSectionNum < o.subSectionNum) {
+			return -1;
+		}
+		return 0;
+	}
 }

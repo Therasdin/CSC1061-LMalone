@@ -26,6 +26,7 @@ public class BookTree implements Iterable<BookNode>{
 
 		if (secNum == 0) {
 			root.getChildNodes().add(node);// same as below
+			Collections.sort(root.getChildNodes());
 			return true;
 //			List<BookNode> list = root.getChildNodes();
 //			list.add(node);
@@ -35,7 +36,11 @@ public class BookTree implements Iterable<BookNode>{
 			for (BookNode aNode : root.getChildNodes()) {
 				if (chapNum == aNode.getChapterNum()) {
 					aNode.getChildNodes().add(node);
+					Collections.sort(aNode.getChildNodes());
+					return true;
 				}
+			}
+				return false;
 			}
 			BookNode chapterNode = null;
 			for (BookNode cNode : root.getChildNodes()) {
@@ -49,10 +54,10 @@ public class BookTree implements Iterable<BookNode>{
 			for (BookNode sNode : chapterNode.getChildNodes()) {
 				if (secNum == sNode.getSectionNum()) {
 					sNode.getChildNodes().add(node);
+					Collections.sort(sNode.getChildNodes());
 					return true;
 				}
 			}
-		}
 		return false;
 	}
 
@@ -79,6 +84,7 @@ public class BookTree implements Iterable<BookNode>{
 			BookNode node = stack.pop();
 			List<BookNode> nodes = new ArrayList<>(node.getChildNodes());
 			Collections.reverse(nodes);
+			
 			for (BookNode child : nodes) {
 				stack.push(child);
 			}
