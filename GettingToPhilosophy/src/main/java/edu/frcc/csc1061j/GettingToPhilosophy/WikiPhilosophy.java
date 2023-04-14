@@ -33,8 +33,9 @@ public class WikiPhilosophy {
     public static void main(String[] args) throws IOException {
         String destination = "https://en.wikipedia.org/wiki/Philosophy";
         String source = "https://en.wikipedia.org/wiki/Java_(programming_language)";
+        String linkFinder = "Href=\"";
 
-        testConjecture(destination, source, 10);
+        testConjecture(destination, source, linkFinder, 10);
     }
 
     /**
@@ -44,7 +45,7 @@ public class WikiPhilosophy {
      * @param source
      * @throws IOException
      */
-    public static void testConjecture(String destination, String source, int limit) throws IOException {
+    public static void testConjecture(String destination, String source, String linkFinder, int limit) throws IOException {
         Document doc = null;
         Connection conn = Jsoup.connect(source);
         try 
@@ -74,12 +75,24 @@ public class WikiPhilosophy {
                 
                 // TODO: FILL THIS IN!
             	// If this node is a text node make sure you are not within parentheses
-            	
+            	System.out.println(linkFinder);
+            	System.out.println(node.toString().substring(0, node.toString().length()/2));
             	// If this node has a link you can get it by accessing the href attribute in the node
             	
             	// If the link is not null and not an empty string and does not start with a # sign 
             	// and is not within parentheses, follow the link recursively by calling testConjecture() 
             	// until you reach your objective or run past the limit. 
+            	
+            	//Part 1: Takes a URL for a Wikipedia page, downloads it, and parses it
+            	Elements text = wf.fetchWikipedia(source);
+            	//Part 2: It should traverse the resulting DOM tree to find the first valid link. I’ll explain what “valid” means below.
+            	
+            	//Part 3 If the page has no links, or if the first link is a page we have already seen, the program should indicate failure and exit.
+            	
+            	//Part 4 If the link matches the URL of the Wikipedia page on philosophy, the program should indicate success and exit.
+            	
+            	
+            	
             }
 
         }

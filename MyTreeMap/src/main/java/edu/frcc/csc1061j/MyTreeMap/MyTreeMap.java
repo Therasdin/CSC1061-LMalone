@@ -166,12 +166,42 @@ public class MyTreeMap<K,V> implements Map<K,V>,Iterable <V> {
 					break;
 				}
 			}
-			if (current.right == null && current.left == null) {
-				
+		if (current.right != null && current.left != null) { // 2 children
+			Node pred = current.left;
+			//Node predParent = current;
+			while (pred.right != null) {
+				pred = pred.right;
 			}
+			current.key = pred.key;
+			current.value = pred.value;
+			current = pred;
+		}
+		if (current.right != null || current.left != null ) { // 1 child
+			if (current.right != null) {
+				parent = current;
+				current = current.right;
+			
+			}
+			if (current.left != null) {
+				parent = current;
+				current = current.left;
+			}
+			parent.key = current.key;
+			parent.value = current.value;
+		}
+		if (current.right == null && current.left == null) { // 0 children
+				if (parent.right == current)
+				{
+					parent.right = null;
+				}
+				else
+				{
+					parent.left = null;
+				}
+		}
 			
 			// need to see which one to remove, then go to parent and cut off
-			// If it has no children, just replace left and right pointers, if it has Children just replace key and value of the next lowest value.
+			// If it has no children, just replace left or right pointers of the parent, if it has Children just replace key and value of the next lowest Node
 			return null;
 	}
 
