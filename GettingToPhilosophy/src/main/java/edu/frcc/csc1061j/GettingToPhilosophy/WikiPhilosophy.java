@@ -32,10 +32,11 @@ public class WikiPhilosophy {
      */
     public static void main(String[] args) throws IOException {
         String destination = "https://en.wikipedia.org/wiki/Philosophy";
-        String source = "https://en.wikipedia.org/wiki/Java_(programming_language)";
-        String linkFinder = "Href=\"";
+        String source = "https://en.wikipedia.org/wiki/Taco_Bell";
+        String linkFinder = "href";
+        int num = 1;
 
-        testConjecture(destination, source, linkFinder, 10);
+        testConjecture(destination, source, linkFinder, 25, num);
     }
 
     /**
@@ -45,10 +46,30 @@ public class WikiPhilosophy {
      * @param source
      * @throws IOException
      */
-    public static void testConjecture(String destination, String source, String linkFinder, int limit) throws IOException {
-        Document doc = null;
+    public static void testConjecture(String destination, String source, String linkFinder, int limit, int num) throws IOException {
+        System.out.println(num + " " + source);
+    	if (destination.equals(source)) {
+        	System.out.println("I Found It!!"); // If it finds it, it returns 
+        	return;
+        }
+    	
+    	if (visited.contains(source)) {
+    		System.out.println("Duplicate, Infinite loop given"); // prevents infinite loops 
+    		return;
+    	}
+        visited.add(source);
+        if (limit == 1) {
+        	System.out.println("Limit reached"); // Once limit is reached, return
+        	return;
+        }
+        limit--;
+        
+    	Document doc = null;
+        int pCount = 0;
+        String str;
         Connection conn = Jsoup.connect(source);
-        try 
+        wf.fetchWikipedia(source); // ToS
+        try
         {
             doc = conn.get();
         }
@@ -66,17 +87,37 @@ public class WikiPhilosophy {
         for (Element para : paragraphs) {
             Iterable<Node> iter = new WikiNodeIterable(para);
             for (Node node : iter) {
-            	
+            
+            
             	if (node instanceof TextNode) {
-            		String str = node.toString();
-            		int index = str.indexOf("(");
-            		str.indexOf("(", index + 1);
+            		str = node.toString();
+            		for (int i = 0; i < str.length(); i++) { // traverses tree and keeps track of parenthesis, if pCount is 1, you are inside a parenthesis 
+            			if (str.charAt(i) =='(') {
+            				pCount++;
+            			}
+            			else if (str.charAt(i) ==')') {
+            				pCount--;
+            			}
+            		}
+            		//int index = str.indexOf("(");
+            		//str.indexOf("(", index + 1);
+            	}
+            	if (node.hasAttr("href") && pCount == 0) { // checks if it is a link, and not in parenthesis 
+            		int start = node.toString().indexOf('"') +1; // gets index of beginning of link
+            		int stop = node.toString().indexOf( '"', start);// gets index of end of link
+            		str = node.toString().substring(start, stop); // creates the link
+            		if (str.charAt(0)== '/') {
+            			source = "https://en.wikipedia.org" + str;
+            			num++;
+            			testConjecture(destination, source, linkFinder, limit, num); // recursion
+            			return;
+            		}
             	}
                 
                 // TODO: FILL THIS IN!
             	// If this node is a text node make sure you are not within parentheses
-            	System.out.println(linkFinder);
-            	System.out.println(node.toString().substring(0, node.toString().length()/2));
+            	//System.out.println(linkFinder);
+            	//System.out.println(node.toString().substring(0, node.toString().length()/2));
             	// If this node has a link you can get it by accessing the href attribute in the node
             	
             	// If the link is not null and not an empty string and does not start with a # sign 
@@ -84,8 +125,8 @@ public class WikiPhilosophy {
             	// until you reach your objective or run past the limit. 
             	
             	//Part 1: Takes a URL for a Wikipedia page, downloads it, and parses it
-            	Elements text = wf.fetchWikipedia(source);
-            	//Part 2: It should traverse the resulting DOM tree to find the first valid link. I’ll explain what “valid” means below.
+            	
+            	//Part 2: It should traverse the resulting DOM tree to find the first valid link.
             	
             	//Part 3 If the page has no links, or if the first link is a page we have already seen, the program should indicate failure and exit.
             	
