@@ -21,17 +21,16 @@ public class TreeMapTest {
 		  
 		  print(map);
 		  
-		  int removedKey = map.remove(6);
-				  
-		  System.out.println(removedKey);
-		  
+		  map.remove(4);
+
 		  print(map);
-		  
 	  }
 
 	private static void print(MyTreeMap<Integer, Integer> map) {
 		for (Integer val : map) {
 			System.out.print(val + " ");
+		
 		}
+		System.out.println("");
 	}
 }

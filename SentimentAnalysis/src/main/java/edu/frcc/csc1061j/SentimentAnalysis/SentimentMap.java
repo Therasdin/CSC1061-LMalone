@@ -27,38 +27,34 @@ public class SentimentMap {
 	    Scanner scanner = new Scanner(System.in);
 	    int totalSentiment = 0;
 	    int wordCount = 0;
-
-	    while (true) {
-	      System.out.print("Enter a sentence (or END to quit): ");
-	      String inputString = scanner.nextLine();
-
-	      // exit loop if user enters "END"
-	      if (inputString.equals("END")) {
-	        break;
-	      }
-
-	      // remove punctuation and convert to lower-case
-	      String[] words = inputString.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
-
-	      // calculate sentiment of the input
-	      for (String word : words) {
-	        // remove spaces from the word
-	        String modifiedWord = word.replaceAll("\\s+", "");
-	        wordCount++;
-	        // check if modified word is in the hash map
-	        if (sentimentMap.containsKey(modifiedWord)) {
-	          totalSentiment += sentimentMap.get(modifiedWord);
-	        }
-	      }
-	    }
-	    scanner.close();
-
-	    // calculate average sentiment
-	    double avgSentiment = (double) totalSentiment / wordCount;
-
-	    // print out results
-	    System.out.println("Number of words: " + wordCount);
-	    System.out.printf("Total sentiment: %d%n", totalSentiment);
-	    System.out.printf("Average sentiment: %.2f%n", avgSentiment);
-	  }
+	    
+	    StringBuilder inputStringBuilder = new StringBuilder();
+		while (true) {
+			System.out.println("Enter a word or phrase (type Q to quit): ");
+			String inputString = scanner.nextLine();
+			if(inputString.equalsIgnoreCase("Q")) { // changed to ignore case for "Q"
+				break;
+			}
+			//makes text lower case with no special characters
+			String[] words = inputString.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
+			for(String word : words) {
+				String newWord = word.replaceAll("\\s", "");
+				if(newWord.equals("Q")) {
+					break;
+				}
+				wordCount++;
+				if(sentimentMap.containsKey(newWord)) {
+					totalSentiment += sentimentMap.get(newWord);
+				}
+			}
+		}
+		scanner.close();
+		
+		double avgSentiment = (double) totalSentiment / wordCount;
+		
+		//console output - fixed formatting and added newline character
+		System.out.println("Word count: " + wordCount);
+		System.out.printf("Total Sentiment: %d%n", totalSentiment); // added comma and newline
+		System.out.printf("Average Sentiment: %.2f%n", avgSentiment); // added newline
 	}
+}

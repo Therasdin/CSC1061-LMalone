@@ -155,6 +155,8 @@ public class MyTreeMap<K,V> implements Map<K,V>,Iterable <V> {
 		Node parent = null;
 		Comparable<K> k = (Comparable<K>) key;
 		
+		
+	
 		while (current != null) {
 			if (k.compareTo(current.key) < 0) {
 				parent = current;
@@ -174,7 +176,6 @@ public class MyTreeMap<K,V> implements Map<K,V>,Iterable <V> {
 			}
 			current.key = pred.key;
 			current.value = pred.value;
-			current = pred;
 		}
 		if (current.right != null || current.left != null ) { // 1 child
 			if (current.right != null) {
