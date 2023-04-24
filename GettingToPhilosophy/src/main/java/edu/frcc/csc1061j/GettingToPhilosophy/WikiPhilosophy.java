@@ -32,7 +32,7 @@ public class WikiPhilosophy {
      */
     public static void main(String[] args) throws IOException {
         String destination = "https://en.wikipedia.org/wiki/Philosophy";
-        String source = "https://en.wikipedia.org/wiki/Walmart";
+        String source = "https://en.wikipedia.org/wiki/Russian_tortoise";
         String linkFinder = "href";
         int num = 1;
 

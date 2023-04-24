@@ -28,7 +28,7 @@ public class MyAVLTreeTest {
 		
 		System.out.println("After RR rotation at node 25");
 		printBalanceFactor(map);
-		
+
 		map.put(30, 30);	// Needs RL rotation at node 20
 		printInOrder(map);
 		
