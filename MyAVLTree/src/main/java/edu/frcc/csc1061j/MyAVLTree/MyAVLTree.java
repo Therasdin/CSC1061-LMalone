@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import edu.frcc.csc1061j.MyTreeMap.MyTreeMap.Node;
+
 public class MyAVLTree<K, V> implements Map<K, V>, Iterable<edu.frcc.csc1061j.MyAVLTree.MyAVLTree.Node> {
 
 	private Node root = null;
@@ -323,57 +325,61 @@ public class MyAVLTree<K, V> implements Map<K, V>, Iterable<edu.frcc.csc1061j.My
 
 	@Override
 	public V remove(Object key) {
-		Node current = root;
-		Node parent = null;
-		Comparable<K> k = (Comparable<K>) key;
+	    Node current = root;
+	    Node parent = null;
+	    Comparable<K> k = (Comparable<K>) key;
 
-		while (current != null) {
-			if (k.compareTo(current.key) < 0) {
-				parent = current;
-				current = current.left;
-			} else if (k.compareTo(current.key) > 0) {
-				parent = current;
-				current = current.right;
-			} else {
-				break;
-			}
-		}
-		if (current.right != null && current.left != null) { // 2 children
-			Node pred = current.left;
-			// Node predParent = current;
-			while (pred.right != null) {
-				pred = pred.right;
-			}
-			current.key = pred.key;
-			current.value = pred.value;
-			current = pred;
-		}
-		if (current.right != null || current.left != null) { // 1 child
-			if (current.right != null) {
-				parent = current;
-				current = current.right;
+	    while (current != null) {
+	        if (k.compareTo(current.key) < 0) {
+	            parent = current;
+	            current = current.left;
+	        } else if (k.compareTo(current.key) > 0) { 
+	            parent = current;
+	            current = current.right;
+	        } else { 
+	            break;
+	        }
+	    }
 
-			}
-			if (current.left != null) {
-				parent = current;
-				current = current.left;
-			}
-			parent.key = current.key;
-			parent.value = current.value;
-		}
-		if (current.right == null && current.left == null) { // 0 children
-			if (parent.right == current) {
-				parent.right = null;
-			} else {
-				parent.left = null;
-			}
-		}
+	    if (current == null) { // key not found
+	        return null;
+	    }
 
-		// need to see which one to remove, then go to parent and cut off
-		// If it has no children, just replace left or right pointers of the parent, if
-		// it has Children just replace key and value of the next lowest Node
-		return null;
+	    if (current.right != null && current.left != null) { // 2 children
+	        Node pred = current.left;
+	        Node predParent = current;
+	        while (pred.right != null) {
+	            predParent = pred;
+	            pred = pred.right;
+	        }
+	        current.key = pred.key;
+	        current.value = pred.value;
+	        current = pred;
+	        parent = predParent;
+	    }
+
+	    if (current.right != null || current.left != null) { // 1 child
+	        Node child = current.right != null ? current.right : current.left;
+	        if (parent == null) { // current is root
+	            root = child;
+	        } else if (parent.left == current) {
+	            parent.left = child;
+	        } else {
+	            parent.right = child;
+	        }
+	    } else { // 0 children
+	        if (parent == null) { // current is root
+	            root = null;
+	        } else if (parent.left == current) {
+	            parent.left = null;
+	        } else {
+	            parent.right = null;
+	        }
+	    }
+	    
+	    return current.value;
 	}
+	
 
 	@Override
 	public void putAll(Map<? extends K, ? extends V> m) {

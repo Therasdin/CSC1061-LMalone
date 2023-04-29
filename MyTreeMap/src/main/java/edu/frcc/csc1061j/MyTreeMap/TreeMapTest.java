@@ -21,7 +21,7 @@ public class TreeMapTest {
 		  
 		  print(map);
 		  
-		  map.remove(4);
+		  map.remove(8);
 
 		  print(map);
 	  }

@@ -185,7 +185,7 @@ public class MyTreeMap<K,V> implements Map<K,V>,Iterable <V> {
 	    }
 
 	    if (current.right != null || current.left != null) { // 1 child
-	        Node child = current.right != null ? current.right : current.left;
+	        Node child = current.right != null ? current.right : current.left; // one line if else statement
 	        if (parent == null) { // current is root
 	            root = child;
 	        } else if (parent.left == current) {
