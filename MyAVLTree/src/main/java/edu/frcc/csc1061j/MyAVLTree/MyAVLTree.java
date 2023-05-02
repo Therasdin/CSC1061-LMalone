@@ -11,6 +11,7 @@ import edu.frcc.csc1061j.MyTreeMap.MyTreeMap.Node;
 
 public class MyAVLTree<K, V> implements Map<K, V>, Iterable<edu.frcc.csc1061j.MyAVLTree.MyAVLTree.Node> {
 
+
 	private Node root = null;
 	private int size = 0;
 	private List<Node> path;
@@ -209,6 +210,7 @@ public class MyAVLTree<K, V> implements Map<K, V>, Iterable<edu.frcc.csc1061j.My
 		updateHeight(child);
 	}
 
+
 	private void balanceRR(Node node, Node parent) {
 		Node rightNode = node.right;
 		if (node == root) {
@@ -270,7 +272,7 @@ public class MyAVLTree<K, V> implements Map<K, V>, Iterable<edu.frcc.csc1061j.My
 				break;
 
 			case 2:
-				if (balanceFactor(current.left) >= 0) {
+				if (balanceFactor(current.right) >= 0) {
 					balanceRR(current, parent);
 				} else {
 					balanceRL(current, parent);
@@ -280,7 +282,6 @@ public class MyAVLTree<K, V> implements Map<K, V>, Iterable<edu.frcc.csc1061j.My
 			}
 		}
 	}
-
 	@Override
 	public V put(K key, V value) {
 		if (root == null) {
@@ -318,7 +319,7 @@ public class MyAVLTree<K, V> implements Map<K, V>, Iterable<edu.frcc.csc1061j.My
 		size++;
 		
 		updateHeight(newNode);
-		balanceFactor(newNode);
+		balancePath();
 		
 		return value;
 	}
