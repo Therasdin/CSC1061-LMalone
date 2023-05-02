@@ -372,8 +372,10 @@ public class MyAVLTree<K, V> implements Map<K, V>, Iterable<edu.frcc.csc1061j.My
 	        if (parent == null) { // current is root
 	            root = null;
 	        } else if (parent.left == current) {
+	        	 current = parent.left;
 	            parent.left = null;
 	        } else {
+	        	 current = parent.right;
 	            parent.right = null;
 	        }
 	    }

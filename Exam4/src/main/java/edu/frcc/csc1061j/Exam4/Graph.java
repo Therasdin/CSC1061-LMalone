@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 
@@ -151,6 +152,7 @@ public class Graph<E> {
 	/* TODO: Implement the BFS algorithm for a graph. It should return a list 
 	** of all the vertices in the breadth-first traversal.
 	*/
+	@SuppressWarnings("unchecked")
 	public List<E> bfs(Vertex root) {
 	    bfsDiscovered.add(root);
 	    Queue<Vertex> queue = new LinkedList<Vertex>();
@@ -176,7 +178,45 @@ public class Graph<E> {
 	** The spanning tree will be a new graph
 	*/
 	public Graph<E> findMinimumSpanningTree() {
-		
-		return null;
+	    // Create a new graph for the minimum spanning tree
+	    Graph<E> mst = new Graph<E>(new ArrayList<Vertex>());
+	    // Create a priority queue to hold the edges
+	    PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
+
+	    // Add all edges to the priority queue
+	    for (Vertex v : vertices) {
+	        for (Edge e : v.neighbors) {
+	            pq.offer(e);
+	        }
+	    }
+
+	    // Create a list to keep track of visited vertices
+	    List<Vertex> visited = new ArrayList<Vertex>();
+
+	    // Perform BFS traversal starting from the first vertex
+	    bfs(vertices.get(0));
+
+	    // Iterate through the discovered vertices in BFS order
+	    for (Vertex v : bfsDiscovered) {
+	        // Mark the vertex as visited
+	        visited.add(v);
+
+	        // Get the edges for the current vertex
+	        List<Edge> edges = v.neighbors;
+	        for (Edge e : edges) {
+	            Vertex u = e.d;
+	            // If the destination vertex has not been visited, add the edge to the minimum spanning tree
+	            if (!visited.contains(u)) {
+	                // Add the vertices to the minimum spanning tree
+	                mst.addVertex(u);
+	                mst.addVertex(e.s);
+	                // Add the edge to the minimum spanning tree
+	                mst.addEdge(new Edge(mst.findVertex(e.s.elem), mst.findVertex(u.elem), e.weight));
+	            }
+	        }
+	    }
+
+	    return mst;
 	}
+
 }

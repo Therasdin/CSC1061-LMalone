@@ -166,11 +166,10 @@ public class MyTreeMap<K,V> implements Map<K,V>,Iterable <V> {
 	            break;
 	        }
 	    }
-
 	    if (current == null) { // key not found
 	        return null;
 	    }
-
+	    Node removedNode = current;
 	    if (current.right != null && current.left != null) { // 2 children
 	        Node pred = current.left;
 	        Node predParent = current;
@@ -203,7 +202,7 @@ public class MyTreeMap<K,V> implements Map<K,V>,Iterable <V> {
 	        }
 	    }
 	    
-	    return current.value;
+	    return removedNode.value;
 	}
 	
 	@Override
