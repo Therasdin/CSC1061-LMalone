@@ -21,23 +21,23 @@ public class TreeMapTest {
 		  
 		  print(map);
 		  
-			int removedKey = map.remove(5);
+			int removedKey = (int) map.remove(5);
 			System.out.println("Removed key: " + removedKey);
 			print(map);
 			
-			removedKey = map.remove(6);
+			removedKey = (int) map.remove(6);
 			System.out.println("Removed key: " + removedKey);
 			print(map);
 			
-			removedKey = map.remove(3);
+			removedKey = (int) map.remove(3);
 			System.out.println("Removed key: " + removedKey);
 			print(map);
 			
-			removedKey = map.remove(4);
+			removedKey = (int) map.remove(4);
 			System.out.println("Removed key: " + removedKey);
 			print(map);
 			
-			removedKey = map.remove(8);
+			removedKey = (int) map.remove(8);
 			System.out.println("Removed value: " + removedKey);	
 			print(map);
 	  }
