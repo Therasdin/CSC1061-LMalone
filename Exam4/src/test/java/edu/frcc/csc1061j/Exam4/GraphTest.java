@@ -30,7 +30,7 @@ public class GraphTest {
 		
 		System.out.println(graph.dfs(graph.vertices.get(3)));
 		System.out.println(graph.bfs(graph.vertices.get(3)));
-		
+
 		System.out.println("Minimum Spanning Tree:");
 		graph.findMinimumSpanningTree().printEdges();	
 		

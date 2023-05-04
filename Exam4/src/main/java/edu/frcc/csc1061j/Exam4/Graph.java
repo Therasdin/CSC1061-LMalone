@@ -3,11 +3,14 @@ package edu.frcc.csc1061j.Exam4;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Graph<E> {
@@ -177,46 +180,30 @@ public class Graph<E> {
 	/* TODO: Create a spanning tree using Kruskal's Algorithm and return it. 
 	** The spanning tree will be a new graph
 	*/
-	public Graph<E> findMinimumSpanningTree() {
-	    // Create a new graph for the minimum spanning tree
-	    Graph<E> mst = new Graph<E>(new ArrayList<Vertex>());
-	    // Create a priority queue to hold the edges
-	    PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
-
-	    // Add all edges to the priority queue
-	    for (Vertex v : vertices) {
-	        for (Edge e : v.neighbors) {
-	            pq.offer(e);
-	        }
-	    }
-
-	    // Create a list to keep track of visited vertices
-	    List<Vertex> visited = new ArrayList<Vertex>();
-
-	    // Perform BFS traversal starting from the first vertex
-	    bfs(vertices.get(0));
-
-	    // Iterate through the discovered vertices in BFS order
-	    for (Vertex v : bfsDiscovered) {
-	        // Mark the vertex as visited
-	        visited.add(v);
-
-	        // Get the edges for the current vertex
-	        List<Edge> edges = v.neighbors;
-	        for (Edge e : edges) {
-	            Vertex u = e.d;
-	            // If the destination vertex has not been visited, add the edge to the minimum spanning tree
-	            if (!visited.contains(u)) {
-	                // Add the vertices to the minimum spanning tree
-	                mst.addVertex(u);
-	                mst.addVertex(e.s);
-	                // Add the edge to the minimum spanning tree
-	                mst.addEdge(new Edge(mst.findVertex(e.s.elem), mst.findVertex(u.elem), e.weight));
-	            }
-	        }
-	    }
-
-	    return mst;
+	 public Graph<E> findMinimumSpanningTree() {
+		   // Sort all the edges in non-decreasing order of their weight
+		List<Edge> edges = new ArrayList<Edge>();
+		Map<Vertex,Vertex> vMap = new HashMap<>();
+		List<Vertex> mstVerticies = new ArrayList<>();
+		   for (Vertex vertex : vertices) {
+		    edges.addAll(vertex.neighbors);
+		   }
+		   edges.sort(new Comparator<Edge>() {
+			   @Override public int compare(Edge o1, Edge o2)
+			   {
+				   return o1.weight-o2.weight;
+			   }
+		   });
+		   
+		   for(Vertex V: vertices) {
+		    Vertex mstV = new Vertex(V.elem);
+		    mstVerticies.add(mstV);
+		    vMap.put(V, mstV);
+		   }
+		   Graph<E> graph = new Graph<E>(mstVerticies);
+		   
+		   
+		   
+		return graph;
 	}
-
 }
