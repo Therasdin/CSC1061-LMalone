@@ -92,9 +92,10 @@ public class Graph<E> {
 	}
 
 	public boolean addEdge(Edge edge) {
-		//List<Edge> neighbors = edge.s.neighbors;
-		if (!edge.s.neighbors.contains(edge)) {
-			edge.s.neighbors.add(edge);
+
+		List<Edge> neighbors = edge.s.neighbors;
+		if (!neighbors.contains(edge)) {
+			neighbors.add(edge);
 			return true;
 		} else {
 			return false;
@@ -211,11 +212,10 @@ public class Graph<E> {
 //			System.out.println(connections.size());
 			if (!connections.contains(e.d)) {
 				spanningTree.addEdge(e);
-				//System.out.println(e.s + " " + e.d + " " + e.weight );
+				System.out.println(e.s + " " + e.d + " " + e.weight );
 				 totalWeight = totalWeight + e.weight; 
 			}
 		}
-
 		//System.out.println(connections.get(5));
 		//System.out.println(totalWeight);
 		/*
@@ -225,7 +225,6 @@ public class Graph<E> {
 		 * @Override public int compare(Edge o1, Edge o2) { return o1.weight -
 		 * o2.weight; } });
 		 */
-		spanningTree.printEdges();
 		return spanningTree;
 	}
 }
