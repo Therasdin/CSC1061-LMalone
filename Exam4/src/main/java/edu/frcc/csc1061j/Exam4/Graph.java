@@ -216,11 +216,12 @@ public class Graph<E> {
 						spanningTree.findVertex(e.d.elem), e.weight);
 				spanningTree.addEdge(newEdge);
 				//System.out.println(e.s.elem + " " + e.d.elem + " " + e.weight );
-				 totalWeight = totalWeight + e.weight; 
+				 totalWeight = totalWeight + e.weight;
 			}
 		}
 		//System.out.println(connections.get(5));
-		//System.out.println(totalWeight);
+		totalWeight = totalWeight/2;
+		System.out.println(totalWeight);
 		/*
 		 * for (Vertex vertex : vertices) { edges.addAll(vertex.neighbors); }
 		 * edges.sort(new Comparator<Edge>() {
