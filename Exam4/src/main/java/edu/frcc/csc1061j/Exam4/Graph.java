@@ -212,7 +212,9 @@ public class Graph<E> {
 //			System.out.println(connections.size());
 			if (!connections.contains(e.d)) {
 				spanningTree.addEdge(e);
-				System.out.println(e.s + " " + e.d + " " + e.weight );
+				Edge newEdge = new Edge(spanningTree.findVertex(e.s.elem), spanningTree.findVertex(e.d.elem), e.weight);
+				spanningTree.addEdge(newEdge);
+				//System.out.println(e.s.elem + " " + e.d.elem + " " + e.weight );
 				 totalWeight = totalWeight + e.weight; 
 			}
 		}
