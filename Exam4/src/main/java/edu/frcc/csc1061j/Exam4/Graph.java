@@ -221,7 +221,7 @@ public class Graph<E> {
 		}
 		//System.out.println(connections.get(5));
 		totalWeight = totalWeight/2;
-		System.out.println(totalWeight);
+		//System.out.println(totalWeight);
 		/*
 		 * for (Vertex vertex : vertices) { edges.addAll(vertex.neighbors); }
 		 * edges.sort(new Comparator<Edge>() {
